@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Art Gallery Projects</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=Carter+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="base.css?12345">
+  <link rel="stylesheet" href="mobile.css?12345" media="(max-aspect-ratio: 166669/100000)">
+  <link rel="stylesheet" href="desktop.css?12345" media="(min-aspect-ratio: 166670/100000)">
+</head>
+<body>
+  <header>
+    <a href="#" class="logo"></a>
+    <nav class="nav-links">
+      <a class="nav-item icon-about" href="#about"><span>About</span></a>
+      <a class="nav-item icon-project" href="/projects"><span>Projects</span></a>
+      <a class="nav-item icon-portfolio" href="#outsourcing"><span>Portfolio</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <div id="view">
+      <div class="projects-container" id="projects-container"></div>
+      <section class="grid" id="grid">
+        <div class="grid-title" id="grid-title">Projects</div>
+        <div class="grid-container" id="grid-container"></div>
+      </section>
+    </div>
+  </main>
+  <footer>
+    <div class="mobile-back" onclick="enterGridView()"><i class="fa-solid fa-angles-left"></i></div>
+    <div class="social-section">
+      <div class="social-links">
+        <!-- <a href="https://www.instagram.com/purrrplepixels/" target="_blank">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://bsky.app/profile/purrrplepixels.com" target="_blank">
+          <i class="fa-brands fa-bluesky"></i>
+        </a>
+        <a href="mailto:purrrplepixelsgames@gmail">
+          <i class="fa-solid fa-envelope"></i>
+        </a> -->
+        
+        <a class="social-btn discord" target="_blank" href="#discord_link"></a>
+        <a class="social-btn bluesky" target="_blank" href="https://bsky.app/profile/purrrplepixels.com"></a>
+        <a class="social-btn mail" target="_blank" href="mailto:purrrplepixelsgames@gmail.com"></a>
+        
+      </div>
+    </div>
+  </footer>
+  
+  <script src="/scripts/lightbox.js?t= + new Date().getTime()" defer></script>
+  <script src="main.js" defer></script>
+</body>
+</html>
+

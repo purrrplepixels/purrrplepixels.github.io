@@ -1,0 +1,4 @@
+*.bat
+*.db
+/projects/assets/bases
+*.db

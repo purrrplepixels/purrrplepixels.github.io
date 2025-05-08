@@ -1,0 +1,109 @@
+:root {
+    /* pallete */
+    --pal0: #37235E;
+    --pal1: #5B3A98;
+    --pal2: #8052D2;
+    --pal3: #9B62EB;
+    --pal4: #C38BFF;
+    --pal5: #DFACFF;
+    --pal6: #F7C8FF;
+    --pal7: #FDF0FF;
+
+    --darker: var(--pal0);
+    --header: var(--pal2);
+    --dark: var(--pal1);
+    --mid: var(--pal4);
+    --light: var(--pal6);
+    --white: var(--pal7);
+    --font: "Carter One";
+
+    --dynamic_height: 100vh;
+    --navwidth:260px;
+    --sidegridwidth: 180px;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--mid) transparent;
+}
+
+*::-webkit-scrollbar {
+    width: 6px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--mid);
+    border-radius: 3px;
+}
+
+@keyframes icon-anim {
+    0% { background-image: var(--frame1);}
+    45% { background-image: var(--frame1);}
+    50% { background-image: var(--frame2);}
+    95% { background-image: var(--frame2);}
+    100% { background-image: var(--frame1);}
+}
+
+/* header */
+.nav-item.icon-about{
+    background-image: url(/icons/about.png);
+}
+.nav-item.icon-about:hover{
+    background-image: url(/icons/about_hover.png);
+}
+
+.nav-item.icon-project{
+    background-image: url(/icons/projects.png);
+}
+.nav-item.icon-project:hover{
+    background-image: url(/icons/projects_hover.png);
+}
+
+.nav-item.icon-portfolio{
+    background-image: url(/icons/portfolio.png);
+}
+.nav-item.icon-portfolio:hover{
+    background-image: url(/icons/portfolio_hover.png);
+}
+
+/* footer  */
+.social-btn.discord{
+    background-image: url(/icons/discord.png);
+}
+.social-btn.bluesky{
+    background-image: url(/icons/bluesky.png);
+}
+/* .social-btn.mail{
+    --frame1: url(/icons/mail_hover1.png);
+    --frame2: url(/icons/mail_hover2.png);
+    background-image: url(/icons/mail.png);
+    animation: preloadhack 0s;
+    
+} */
+
+.social-btn.discord:hover{
+    background-image: url(/icons/discord_hover.png);
+}
+.social-btn.bluesky:hover{
+    --frame1: url(/icons/bluesky.png);
+    --frame2: url(/icons/bluesky_hover.png);
+    animation: icon-anim 300ms linear 100ms infinite;
+}
+
+/* .social-btn.mail:hover{
+    animation: icon-anim 500ms linear 100ms infinite;
+} */
+@keyframes test {
+    0% { background-position-x: -32px; }
+    100% { background-position-x: -96px; }
+    
+  }
+.social-btn.mail{
+    background-image: url(/icons/mail_sprite.png);
+    background-position: 0;
+}
+.social-btn.mail:hover{
+    background-position: -32px;
+    background-image: url(/icons/mail_sprite.png);
+    animation: test 500ms steps(2) infinite;
+}

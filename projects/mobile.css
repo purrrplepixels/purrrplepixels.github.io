@@ -1,0 +1,493 @@
+html,
+body {
+    margin: 0;
+    font-family: var(--font);
+    background-color: var(--dark);
+    color: var(--white);
+    font-size: 16px;
+    /* overflow: hidden auto; */
+}
+
+/*nav bar*/
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    z-index: 100;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--header);
+}
+
+.logo {
+    display: block;
+    width: 55px;
+    height: 55px;
+    min-width: 55px;
+    background-image: url(../../logo.gif);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    image-rendering: pixelated;
+    image-rendering: inherit;
+    margin-bottom: 0;
+}
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    flex: 2;
+    height: 100%;
+    padding-right: 5%;
+}
+
+
+.nav-item {
+    text-decoration: none;
+    color: white;
+    
+    padding: 0;
+    margin: 0;
+    
+    width: 25%;
+    height: 100%;
+    
+    justify-content: left;
+    
+    align-items: center;
+    vertical-align: middle;
+    
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    border-radius: 2px;
+    
+    margin: auto;
+}
+
+.nav-item:hover {
+    animation-name: navshake;
+    animation-duration: 1s;
+}
+@keyframes navshake {
+    0% {
+        background-position: 45%;
+    }
+
+    10% {
+        background-position: 60%;
+    }
+
+    25% {
+        background-position: 42%;
+    }
+
+    45% {
+        background-position: 55%;
+    }
+
+    70% {
+        background-position: 48%;
+    }
+
+    90% {
+        background-position: 51%;
+    }
+
+    100% {
+        background-position: 50%;
+    }
+}
+
+.nav-item span {
+    display: none;
+}
+
+
+/* footer */
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    z-index: 100;
+    background-color: var(--header);
+    height: 48px;
+    box-sizing: border-box;
+}
+.social-section {
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+    flex: 1;
+    /* max-width: 192px; */
+}
+
+.social-links {
+    display: flex;
+    justify-content: space-evenly;
+    min-width: 128px;
+    /* max-width: 192px; */
+}
+
+.social-btn {
+    cursor: pointer;
+    display: block;
+    --bsz: 32px;
+    width: var(--bsz);
+    height: var(--bsz);
+    line-height: var(--bsz);
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* margin: 0 12px; */
+    /* display: inline-block; */
+}
+.mobile-back {
+    color: transparent;
+    text-align: center;
+    cursor: pointer;
+    flex: 1;
+    width: auto;
+    place-content: center;
+    height: 100%;
+}
+.mobile-back.show {
+    color: var(--white);
+}
+.mobile-back.show i {
+    width: 90%;
+    height: 32px;
+    align-content: center;
+    border-radius: 8px;
+}
+.mobile-back.show:hover i {
+    background-color: #f7c8ff38;
+}
+
+
+/* main */
+main {
+    display: block;
+    margin-top: 75px;
+    margin-bottom: 48px;
+    background: var(--dark);
+    --gradcolor: color-mix(in hsl,var(--pal1), var(--pal2) 32%);
+    --gradcolor: #7d4cc2;
+    background: linear-gradient(45deg, var(--gradcolor) 0%, var(--pal1) 30%, var(--pal1) 70%, var(--gradcolor) 100%);
+}
+
+/* grid */
+
+.project-view .grid {
+    display: none;
+}
+
+.grid-view .grid {
+    padding: 1rem 0.5rem;
+    z-index: 2;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.grid-title {
+    display: block;
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-align: center;
+    padding: 1em;
+    padding-top: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.grid-view .grid-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 1em;
+
+}
+
+
+.grid-view .grid-item {
+    min-width: min(100%, 240px);
+    max-height: 40%;
+    width: 24%;
+    aspect-ratio: 2 / 3;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: .25em;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    animation-duration: 500ms;
+    cursor: pointer;
+    image-rendering: pixelated;
+    background-color: var(--darker);
+}
+
+@keyframes slide1 {
+    0% {
+        transform: translatex(100vw) scale(.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes slide2 {
+    0% {
+        transform: translatex(-100vw) scale(.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.grid-view .grid-item:nth-child(odd) {
+    animation-name: slide1;
+}
+
+.grid-view .grid-item:nth-child(even) {
+    animation-name: slide2;
+}
+
+.grid-view .grid-item:hover {
+    transform: scale(1.05);
+}
+
+
+/* projects  */
+
+.grid-view .projects-container { display: none; }
+
+
+
+.projects-container {
+    width: 100%;
+}
+
+
+.project-data:not(.active) {
+    display: none;
+}
+
+.project-card {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+    text-align: center;
+    gap: 1em;
+}
+
+.project-capsule {
+    width: 30%;
+    min-width: min(100%,180px);
+    flex: 1;
+    align-content: center;
+}
+
+.project-capsule img {
+    max-width: 240px;
+    width: 100%;
+    image-rendering: pixelated;
+}
+
+/* .project-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+} */
+
+
+.project-info {
+    text-align: left;
+    padding: 0;
+    font-family: 'Albert Sans',sans-serif;
+    flex: 3;
+    min-width: 70%;
+}
+.project-info > item {
+    display: block;
+    padding: 0;
+}
+
+.project-info > item > ilabel {
+    background-color: #00000036;
+    font-weight: bold;
+}
+.project-info > item > ivalue{
+    border-top: 1px solid #00000026;
+}
+.project-info > item > * {
+    padding: .25em 20px;
+    display: block;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    height: auto;
+}
+.project-info > description {
+    padding: 10px 20px;
+    margin: 0 20px;
+    display: block;
+    background-color: #00000036;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+
+
+/* .project-description {
+    flex: 1;
+    text-align: center;
+    margin: auto;
+}
+
+.project-link {
+    margin: 1em auto;
+}
+
+.project-link>a {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--header);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 4px;
+} */
+
+
+
+/* gallery  */
+
+.project-gallery {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+.gallery {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.gallery-item {
+    width: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+    cursor: pointer;
+    padding: 6px;
+    box-sizing: border-box;
+    margin: 0;
+    line-height: 0;
+    font-size: 0;
+
+
+}
+
+.gallery-item>img {
+    width: 100%;
+    border-radius: 6px;
+}
+
+
+
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    height: var(--dynamic_height);
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    display: none;
+    /* starting display mode */
+}
+
+#lightbox-img {
+    image-rendering: pixelated;
+    max-width: 90vw;
+    max-height: 80vh;
+    object-fit: contain;
+    width: auto;
+    height: auto;
+    transition: transform 0.3s ease;
+    transform-origin: center center;
+}
+
+.lightbox-controls {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    touch-action: manipulation;
+    /* Allow button touches */
+}
+
+.lightbox-controls button {
+    border: 2px solid var(--dark);
+    opacity: .75;
+    border-radius: 1em;
+    font-family: var(--font);
+    background: transparent;
+    color: var(--mid);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: .5em 2em;
+}
+
+
+
+@media (max-width: 500px) {
+    .grid-item {
+        image-rendering: inherit;
+    }
+
+}
+
+@media (max-height: 750px) {
+    html {
+        zoom: .75;
+    }
+
+    * {
+        image-rendering: inherit !important;
+    }
+
+    .lightbox img {
+        image-rendering: pixelated !important;
+        max-width: 90%;
+        max-height: 80%;
+    }
+}
+
+@media (max-height: 500px) {
+    html {
+        zoom: .5;
+    }
+}
+
+/* @media (max-aspect-ratio: 16/9) { */
+@media (max-aspect-ratio: 15/9) {
+
+
+
+
+}

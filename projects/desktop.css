@@ -1,0 +1,497 @@
+
+html,
+body {
+    margin: 0;
+    font-family: var(--font);
+    background-color: var(--dark);
+    color: var(--white);
+    font-size: 16px;
+}
+/*header*/
+header {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: var(--navwidth);
+    background-color: var(--header);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.logo {
+    width: 220px;
+    height: 220px;
+    min-height: 220px;
+    display: block;
+    background-image: url(../../logo.gif);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    background-position: center;
+    margin-bottom: 3rem;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+    background-repeat: no-repeat;
+    padding: 1rem;
+    padding-left: 3rem;
+    height: 2rem;
+    line-height: 2rem;
+    vertical-align: middle;
+    background-position: left;
+    background-position-x: 10px;
+    border-radius: 1rem;
+    transition: all .2s cubic-bezier(0.55, 0.09, 0.68, 0.53);
+    margin-bottom: .125rem;
+}
+
+
+
+
+
+
+.nav-item:hover {
+    background-color: var(--dark);
+    background-position-x: 15px;
+    padding-left: 53px;
+
+}
+
+/* footer */
+
+footer {
+    position: absolute;
+    inset: auto auto 0 0;
+    width: var(--navwidth);
+}
+.social-section {
+    transition: all 0.3s ease;
+    padding: 1em;
+}
+
+.social-links {display: flex;justify-content: space-evenly;}
+
+.social-btn {
+    cursor: pointer;
+    display: block;
+    --bsz: 32px;
+    width: var(--bsz);
+    height: var(--bsz);
+    line-height: var(--bsz);
+    text-align: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+
+
+
+
+
+
+
+
+
+
+main {
+    position: absolute;
+    inset:0 0 0 var(--navwidth);
+}
+main {
+    background: var(--dark);
+    --gradcolor: color-mix(in hsl,var(--pal1), var(--pal2) 32%);
+    --gradcolor: #7d4cc2;
+    background: linear-gradient(45deg, var(--gradcolor) 0%, var(--pal1) 30%, var(--pal1) 70%, var(--gradcolor) 100%);
+}
+
+
+/*end of base css */
+
+/*layout*/
+.grid,
+.projects-container {
+    position: absolute;
+}
+
+
+.grid-view > .grid {
+    inset: 0 0 0 0;
+    box-sizing: border-box;
+    overflow: hidden auto;
+}
+
+.grid-view > .projects-container{
+    display: none;
+}
+
+.project-view > .grid {
+    inset: 0 0 0 auto;
+    width: var(--sidegridwidth);
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.project-view > .projects-container {
+    inset: 0 var(--sidegridwidth) 0 0;
+}
+
+.mobile-back {
+    display: none;
+}
+
+
+
+
+.grid {
+    border-left: 2px dashed var(--pal3);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 0.5rem;
+    z-index: 2;
+}
+
+.grid-title {
+    font-size: 2rem;
+    cursor: pointer;
+    text-align: center;
+    padding: 0;
+}
+
+.project-view .grid-title {
+    font-size: 1em;
+    padding: 0.5rem 1rem;
+    background-color: var(--header);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.grid-container {
+    display: flex;
+    flex-direction: column;
+    padding-right: .25rem;
+    gap: 1rem;
+}
+
+.grid-view .grid-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    padding-bottom: 20px;
+    max-height: fit-content;
+    height: auto;
+    overflow: visible;
+}
+
+.project-view .grid-container {
+    overflow: hidden auto;
+    -ms-overrflow-style: none;
+    scrollbar-width: none;
+}
+
+.grid-container::-webkit-scrollbar {
+    display: none;
+}
+
+.grid-item {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    background-size: cover;
+    background-position: center;
+    image-rendering: pixelated;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    border-radius: .25em;
+    background-color: var(--pal5);
+}
+
+.grid-view .grid-item {
+    width: 100%;
+    max-width: 360px;
+    margin: min(0.5rem, 2vw);
+    background-repeat: no-repeat;
+    background-size: contain;
+    animation-duration: 500ms;
+    cursor: pointer;
+}
+
+@keyframes slide1 {
+    0% {
+        transform: translatex(100vw) scale(.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes slide2 {
+    0% {
+        transform: translatex(-100vw) scale(.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.grid-view .grid-item:nth-child(odd) {
+    animation-name: slide1;
+}
+
+.grid-view .grid-item:nth-child(even) {
+    animation-name: slide2;
+}
+
+
+
+.grid-view .grid-item:hover {
+    transform: scale(1.05);
+}
+
+.project-view .grid-item {
+    transition: all .5 ease-in-out
+}
+
+.project-view .grid-item.active {
+    display: none;
+}
+
+.projects-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    transition: opacity 0.3s ease;
+}
+
+.project-data {
+    display: none;
+    flex: 1;
+    overflow: hidden;
+}
+
+.project-data.active {
+    display: flex;
+    flex-direction: row;
+    -ms-overrflow-style: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--mid) transparent;
+}
+
+.project-data.active::-webkit-scrollbar {
+    width: 6px;
+}
+
+.project-data.active::-webkit-scrollbar-thumb {
+    background-color: var(--mid);
+    border-radius: 3px;
+}
+
+.project-card {
+    width: 400px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.project-capsule {
+    aspect-ratio: 2 / 3;
+    max-width: 100%;
+    height: 300px;
+    object-fit: contain;
+    cursor: pointer;
+    margin: 0;
+    image-rendering: pixelated;
+    display: block;
+    margin: 2rem auto;
+    background-color: var(--darker);
+    align-content: center;
+}
+.project-capsule img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 2 / 3;
+}
+
+.project-title {
+    font-size: 1.5rem;
+    margin-bottom: .5rem;
+    padding: .5rem;
+}
+
+
+
+.project-link {
+    margin: 1em auto;
+}
+
+.project-link>a {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--header);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.project-gallery {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: unset;
+    height: 100%;
+    line-height: 0;
+}
+
+.gallery-item {
+    max-height: fit-content;
+    width: 100%;
+    /* max-width: 100dvw; */
+    /* height: 50%; */
+    object-fit: contain;
+    image-rendering: pixelated;
+    cursor: pointer;
+    padding: 6px;
+    box-sizing: border-box;
+
+}
+
+.gallery-item>img {
+    width: 100%;
+    border-radius: 6px;
+}
+
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    height: var(--dynamic_height);
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    display: none;
+    /* starting display mode */
+}
+
+#lightbox-img {
+    image-rendering: pixelated;
+    max-width: 94vw;
+    max-height: 85vh;
+    object-fit: contain;
+    width: auto;
+    height: 100%;
+    transition: transform 0.3s ease;
+    transform-origin: center center;
+}
+
+.lightbox-controls {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    touch-action: manipulation;
+    /* Allow button touches */
+}
+
+.lightbox-controls button {
+    border: 2px solid var(--dark);
+    opacity: .75;
+    border-radius: 1em;
+    font-family: var(--font);
+    background: transparent;
+    color: var(--mid);
+    font-size: 1rem;
+    cursor: pointer;
+    padding: .5em 2em;
+}
+
+.mobile-back {
+    display: none;
+}
+
+@media (max-width: 500px) {
+    .grid-item {
+        image-rendering: inherit;
+    }
+
+}
+
+@media (max-height: 750px) {
+    html {
+        zoom: .75;
+    }
+    .lightbox img {
+        image-rendering: pixelated !important;
+        max-width: 90%;
+        max-height: 80%;
+    }
+}
+
+@media (max-height: 500px) {
+    html {
+        zoom: .5;
+    }
+}
+
+
+.project-info {
+    display: block;
+    text-align: left;
+    padding: 0;
+    font-family: 'Albert Sans',sans-serif;
+}
+.project-info > item {
+    display: block;
+    padding: 0 20px;
+}
+
+.project-info > item > ilabel {
+    background-color: #00000036;
+    font-weight: bold;
+}
+.project-info > item > ivalue{
+    border-top: 1px solid #00000026;
+}
+.project-info > item > * {
+    padding: .25em 20px;
+    display: block;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    height: auto;
+}
+.project-info > description {
+    padding: 10px 20px;
+    margin: 0 20px;
+    display: block;
+    background-color: #00000036;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
