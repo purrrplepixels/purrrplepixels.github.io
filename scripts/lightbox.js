@@ -1,4 +1,3 @@
-// Create lightbox elements programmatically (runs immediately)
 const lightbox = document.createElement('div');
 const lightboxImg = document.createElement('img');
 const controls = document.createElement('div');
@@ -11,7 +10,7 @@ lightbox.id = 'lightbox';
 
 lightboxImg.id = 'lightbox-img';
 lightboxImg.src = '';
-lightboxImg.alt = 'Preview';
+lightboxImg.alt = 'LightBox Img';
 
 controls.className = 'lightbox-controls';
 
@@ -30,11 +29,12 @@ document.body.appendChild(lightbox);
 
 // Lightbox state
 let currentIndex = 0;
+let prevIndex = 0;
 let image_list = [];
 
 // Event handlers
 lightbox.addEventListener('click', function(e) {
-    closeLightbox();
+  closeLightbox();
 });
 
 prevBtn.addEventListener('click', function(e) {
@@ -47,15 +47,27 @@ nextBtn.addEventListener('click', function(e) {
   nextImage();
 });
 
+
+function set_image(index) {
+  
+  lightboxImg.src = image_list[index];
+  prevIndex = currentIndex;
+  currentIndex = index;
+  lightboxImg.onerror = () => {
+    if(currentIndex != index) return;
+    if(currentIndex == prevIndex) closeLightbox(); //open invalid
+    lightboxImg.src = "/not-found.webp";
+  }
+}
 // Core functions
 function openLightbox(evt,index, img_arr) {
   if(evt.pointerType == "touch") return;
-  
   image_list = img_arr;
   currentIndex = index;
-  lightboxImg.src = image_list[currentIndex];
+  set_image(index);
   lightbox.style.display = 'flex';
   document.body.style.overflow = 'hidden';
+  last_moving_direction = 0;
 }
 
 function closeLightbox() {
@@ -65,14 +77,12 @@ function closeLightbox() {
 
 function prevImage() {
   if (!image_list.length) return;
-  currentIndex = (currentIndex - 1 + image_list.length) % image_list.length;
-  lightboxImg.src = image_list[currentIndex];
+  set_image((currentIndex - 1 + image_list.length) % image_list.length);
 }
 
 function nextImage() {
   if (!image_list.length) return;
-  currentIndex = (currentIndex + 1) % image_list.length;
-  lightboxImg.src = image_list[currentIndex];
+  set_image((currentIndex + 1) % image_list.length)
 }
 
 // Expose public API

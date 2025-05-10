@@ -386,6 +386,18 @@ main {
     border-radius: 6px;
 }
 
+.gallery-item.error {
+    display: flex;
+    justify-content: center;
+    border: 2px dashed var(--pal3);
+}
+.gallery-item.error > img {
+    height: 135px;
+    width: 90px;
+}
+
+
+/* lightbox */
 
 .lightbox {
     position: fixed;

@@ -54,7 +54,7 @@ const projects_data = {
         "Pixel Art Animation",
       ],
     },
-    gallery_size: 3,
+    gallery_size: 6,
   },
   undeadissues: {
     title: "Undead Issues",
@@ -103,9 +103,19 @@ for(const [code,project] of Object.entries(projects_data)) {
       // Create grid item
       const g_item = document.createElement('div');
       g_item.className = 'grid-item';
-      g_item.style.backgroundImage = `url(assets/${project.code}/capsule.webp),url(/loading.webp)`;
+      g_item.style.backgroundImage = `url(/loading.webp)`;
       g_item.setAttribute('data-project-code', project.code);
       g_item.title = project.title;
+      {
+        const img = new Image();
+        img.src = `assets/${project.code}/capsule.webp`;
+        img.onload = () => {
+          g_item.style.backgroundImage = `url(assets/${project.code}/capsule.webp)`;
+        }
+        img.onerror = () => {
+          g_item.style.backgroundImage = `url(/not-found.webp)`;
+        }
+      }
       
       g_item.addEventListener('click', function() {
         setActiveProject(project.code);
@@ -148,6 +158,11 @@ for(const [code,project] of Object.entries(projects_data)) {
         //if(!proj_data) return null;
         
         if(project.loaded) return project;
+
+        //load gallery images
+        const gallery_image_array = Array.from({length: project.gallery_size}, (_, i) => 
+          `assets/${project.code}/item_${String(i).padStart(3, '0')}.webp`
+        );
         
         //project-card
         const p_card = proj_data.appendChild(document.createElement('div'));
@@ -163,9 +178,16 @@ for(const [code,project] of Object.entries(projects_data)) {
         p_capsule.appendChild(p_capsule_img);
         p_capsule_img.onload = () => {
           p_capsule.classList.remove("loading");
-          p_capsule_img.onclick = (e) => openLightbox(e,project.gallery_size, g_image_arr); //works because hoisting
-
+          gallery_image_array.push(p_capsule_img.src); // add capsule to lightbox
+          p_capsule_img.onclick = (e) => openLightbox(e,project.gallery_size, gallery_image_array);
         }
+        p_capsule_img.onerror = () => {
+          p_capsule_img.onload = null; // avoid call onload again
+          p_capsule_img.src = `/not-found.webp`;
+          p_capsule.classList.remove("loading");
+          p_capsule.classList.add("error");
+        }
+        
         
         const p_info = p_card.appendChild(document.createElement('div'));
         p_info.className = 'project-info';
@@ -211,10 +233,7 @@ for(const [code,project] of Object.entries(projects_data)) {
         gallery.className = 'gallery';
         gallery.id = `gallery-${project.code}`;
 
-        const g_image_arr = Array.from({length: project.gallery_size}, (_, i) => 
-            `assets/${project.code}/item_${String(i).padStart(3, '0')}.webp`
-        );
-        g_image_arr.push(`assets/${project.code}/capsule.webp`);
+
         
         
 
@@ -224,13 +243,18 @@ for(const [code,project] of Object.entries(projects_data)) {
           const g_item = gallery.appendChild(document.createElement('div'));
           g_item.className = 'gallery-item loading';
           const g_img = new Image();
-          g_img.src = g_image_arr[i];
+          g_img.src = gallery_image_array[i];
           g_img.alt = `Item ${i}`;
           g_item.appendChild(g_img);
           g_img.onload = () => {
             g_item.classList.remove("loading");
-            g_img.onclick = (e) => openLightbox(e,i, g_image_arr);
-            
+            g_img.onclick = (e) => openLightbox(e,i, gallery_image_array);
+          }
+          g_img.onerror = () => {
+            g_img.onload = null; // avoid call onload again
+            g_img.src = `/not-found.webp`;
+            g_item.classList.remove("loading");
+            g_item.classList.add("error");
           }
         }
         
