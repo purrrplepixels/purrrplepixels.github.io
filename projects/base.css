@@ -36,74 +36,78 @@
     border-radius: 3px;
 }
 
-@keyframes icon-anim {
-    0% { background-image: var(--frame1);}
-    45% { background-image: var(--frame1);}
-    50% { background-image: var(--frame2);}
-    95% { background-image: var(--frame2);}
-    100% { background-image: var(--frame1);}
-}
-
 /* header */
 .nav-item.icon-about{
-    background-image: url(/icons/about.png);
+    background-image: url(/icons/about.webp);
 }
 .nav-item.icon-about:hover{
-    background-image: url(/icons/about_hover.png);
+    background-image: url(/icons/about_hover.webp);
 }
 
 .nav-item.icon-project{
-    background-image: url(/icons/projects.png);
+    background-image: url(/icons/projects.webp);
 }
 .nav-item.icon-project:hover{
-    background-image: url(/icons/projects_hover.png);
+    background-image: url(/icons/projects_hover.webp);
 }
 
 .nav-item.icon-portfolio{
-    background-image: url(/icons/portfolio.png);
+    background-image: url(/icons/portfolio.webp);
 }
 .nav-item.icon-portfolio:hover{
-    background-image: url(/icons/portfolio_hover.png);
+    background-image: url(/icons/portfolio_hover.webp);
 }
 
 /* footer  */
-.social-btn.discord{
-    background-image: url(/icons/discord.png);
-}
-.social-btn.bluesky{
-    background-image: url(/icons/bluesky.png);
-}
-/* .social-btn.mail{
-    --frame1: url(/icons/mail_hover1.png);
-    --frame2: url(/icons/mail_hover2.png);
-    background-image: url(/icons/mail.png);
-    animation: preloadhack 0s;
-    
-} */
 
-.social-btn.discord:hover{
-    background-image: url(/icons/discord_hover.png);
+
+@keyframes anim-icon-discord {
+    0% {transform: scale(.8,1.25) translateY(0px);}
+    20% {transform: scale(1) translateY(-3px);}
+    25% {transform: scale(1) translateY(-4px);}
+    40% {transform: scale(.8,1.25) translateY(-2px);}
+    55% {transform: scale(1) translateY(0);}
+    75% {transform: scale(1.25,.8);}
+    100% {transform: none;}
 }
-.social-btn.bluesky:hover{
-    --frame1: url(/icons/bluesky.png);
-    --frame2: url(/icons/bluesky_hover.png);
-    animation: icon-anim 300ms linear 100ms infinite;
+.social-btn.icon-discord{
+    background-image: url(/icons/discord.webp);
+    background-position-x: 0;
+}
+.social-btn.icon-discord:hover{
+    background-position-x: -32px;
+}
+.social-btn.icon-discord.animating{
+    background-position-x: -32px;
+    animation: anim-icon-discord .5s linear 0s 1;
 }
 
-/* .social-btn.mail:hover{
-    animation: icon-anim 500ms linear 100ms infinite;
-} */
-@keyframes test {
-    0% { background-position-x: -32px; }
-    100% { background-position-x: -96px; }
-    
-  }
-.social-btn.mail{
-    background-image: url(/icons/mail_sprite.png);
+@keyframes anim-icon-bluesky {
+    from { background-position-x: -32px; }
+    to { background-position-x: 0px; }
+}
+.social-btn.icon-bluesky{
+    background-image: url(/icons/bluesky.webp);
+    background-position-x: 0;
+}
+.social-btn.icon-bluesky:hover{
+    animation: anim-icon-bluesky 300ms steps(2,jump-none) 100ms infinite;
+}
+@keyframes anim-icon-mail {
+    from { background-position-x: -32px; }
+    to { background-position-x: -64px; }
+}
+.social-btn.icon-mail{
     background-position: 0;
+    background-image: url(/icons/mail.webp);
 }
-.social-btn.mail:hover{
+.social-btn.icon-mail:hover{
     background-position: -32px;
-    background-image: url(/icons/mail_sprite.png);
-    animation: test 500ms steps(2) infinite;
+    animation: anim-icon-mail 500ms steps(2,jump-none) infinite;
+}
+
+.loading {
+    background-image: url(/loading.webp);
+    background-repeat: no-repeat;
+    background-position: center;
 }

@@ -30,7 +30,7 @@ header {
     width: 55px;
     height: 55px;
     min-width: 55px;
-    background-image: url(../../logo.gif);
+    background-image: url(/logo.webp);
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -384,20 +384,23 @@ main {
     display: block;
     width: 100%;
     box-sizing: border-box;
+    padding: 1px;
 }
 
 .gallery-item {
-    width: 100%;
     object-fit: contain;
     image-rendering: pixelated;
     cursor: pointer;
-    padding: 6px;
     box-sizing: border-box;
-    margin: 0;
+    margin: 4px;
+    padding: 4px;
+    margin-bottom: 8px;
     line-height: 0;
-    font-size: 0;
-
-
+}
+.gallery-item.loading {
+    border: 2px dashed var(--pal2);
+    min-height: 48px;
+    padding: 3px;
 }
 
 .gallery-item>img {

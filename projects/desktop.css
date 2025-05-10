@@ -2,7 +2,7 @@
 html,
 body {
     margin: 0;
-    font-family: var(--font);
+    font-family: var(--font), sans-serif;
     background-color: var(--dark);
     color: var(--white);
     font-size: 16px;
@@ -25,7 +25,7 @@ header {
     height: 220px;
     min-height: 220px;
     display: block;
-    background-image: url(../../logo.gif);
+    background-image: url(/logo.webp);
     background-size: 100%;
     background-repeat: no-repeat;
     image-rendering: pixelated;
@@ -56,6 +56,7 @@ header {
     border-radius: 1rem;
     transition: all .2s cubic-bezier(0.55, 0.09, 0.68, 0.53);
     margin-bottom: .125rem;
+    image-rendering: pixelated;
 }
 
 
@@ -94,6 +95,7 @@ footer {
     text-align: center;
     background-repeat: no-repeat;
     background-position: center;
+    image-rendering: pixelated;
     
 }
 
@@ -216,20 +218,19 @@ main {
     justify-content: center;
     cursor: pointer;
     flex-shrink: 0;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-position: center;
     image-rendering: pixelated;
     transition: transform 0.2s ease, filter 0.2s ease;
     border-radius: .25em;
-    background-color: var(--pal5);
+    background-color: var(--darker);
 }
 
 .grid-view .grid-item {
     width: 100%;
     max-width: 360px;
     margin: min(0.5rem, 2vw);
-    background-repeat: no-repeat;
-    background-size: contain;
     animation-duration: 500ms;
     cursor: pointer;
 }
@@ -363,22 +364,21 @@ main {
 .gallery {
     display: flex;
     flex-wrap: wrap;
-    justify-content: unset;
-    height: 100%;
     line-height: 0;
 }
 
 .gallery-item {
-    max-height: fit-content;
     width: 100%;
-    /* max-width: 100dvw; */
-    /* height: 50%; */
-    object-fit: contain;
     image-rendering: pixelated;
     cursor: pointer;
-    padding: 6px;
+    margin: 6px;
     box-sizing: border-box;
-
+}
+.gallery-item.loading {
+    border-radius: 6px;
+    border: 1px dashed var(--pal2);
+    margin: 5px;
+    min-height: 4vh;
 }
 
 .gallery-item>img {

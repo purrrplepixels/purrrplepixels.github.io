@@ -1,83 +1,85 @@
 const projects_data = {
-    colorbynumber: {
-      title: "Color By Number",
-      info: {
-        "Project": "Color By Number",
-        "Client": "Wild Life Studios",
-        "Summary":"Designed and delivered thousands of pixel art assets, from concept to animation, consistently ensuring cute aesthetics.",
-        "Services":
-        [
-          "Pixel Art Characters and Backgrounds",
-          "Pixel Art Animation",
-          "Concept Art"
-        ],
-      },
-      gallery_size: 13,
+  colorbynumber: {
+    title: "Color By Number",
+    info: {
+      "Project": "Color By Number",
+      "Client": "Wild Life Studios",
+      "Summary":"Designed and delivered thousands of pixel art assets, from concept to animation, consistently ensuring cute aesthetics.",
+      "Services":
+      [
+        "Pixel Art Characters and Backgrounds",
+        "Pixel Art Animation",
+        "Concept Art"
+      ],
     },
-    gobutiko: {
-      title: "Gobutiko",
-      info: {
-        "Project": "Gobutiko",
-        "Client": "Outstandly",
-        "Services":
-        [
-          "Characters Concept Art ",
-          "Pixel Art Sprites and Animations",
-          "Pixel Art Props and Tilesets",
-        ],
-        "What we did":"Delivered over a thousand pixel art and animations"
-      },
-      gallery_size: 9,
+    gallery_size: 13,
+  },
+  gobutiko: {
+    title: "Gobutiko",
+    info: {
+      "Project": "Gobutiko",
+      "Client": "Outstandly",
+      "Services":
+      [
+        "Characters Concept Art ",
+        "Pixel Art Sprites and Animations",
+        "Pixel Art Props and Tilesets",
+        "Game Logo Design",
+        "Steam Capsule Artwork",
+      ],
     },
-    streamraiders: {
-      title: "Color By Number",
-      info: {
-        "Project": "Color By Number",
-        "Client": "Wild Life Studios",
-        "Summary":"Designed and delivered thousands of pixel art assets, from concept to animation, consistently ensuring cute aesthetics.",
-        "Services":
-        [
-          "Pixel Art Characters and Backgrounds",
-          "Pixel Art Animation",
-          "Concept Art"
-        ],
-      },
-      gallery_size: 8,
+    gallery_size: 9,
+  },
+  streamraiders: {
+    title: "Stream Raiders",
+    info: {
+      "Project": "Stream Raiders",
+      "Client": "Outstandly",
+      "Services":
+      [
+        "Pixel Art Characters",
+        "Pixel Art Animation",
+      ],
     },
-    streamarena: {
-      title: "Color By Number",
-      info: {
-        "Project": "Color By Number",
-        "Client": "Wild Life Studios",
-        "Summary":"Designed and delivered thousands of pixel art assets, from concept to animation, consistently ensuring cute aesthetics.",
-        "Services":
-        [
-          "Pixel Art Characters and Backgrounds",
-          "Pixel Art Animation",
-          "Concept Art"
-        ],
-      },
-      gallery_size: 13,
+    gallery_size: 8,
+  },
+  arenakingdoms: {
+    title: "Arena Kingdoms",
+    info: {
+      "Project": "Arena Kingdoms",
+      "Client": "Outstandly",
+      "Services":
+      [
+        "Pixel Art Characters",
+        "Pixel Art Animation",
+      ],
     },
-    undeadissues: {
-      title: "Color By Number",
-      info: {
-        "Project": "Color By Number",
-        "Client": "Wild Life Studios",
-        "Summary":"Designed and delivered thousands of pixel art assets, from concept to animation, consistently ensuring cute aesthetics.",
-        "Services":
-        [
-          "Pixel Art Characters and Backgrounds",
-          "Pixel Art Animation",
-          "Concept Art"
-        ],
-      },
-      gallery_size: 13,
+    gallery_size: 3,
+  },
+  undeadissues: {
+    title: "Undead Issues",
+    info: {
+      "Project": "Undead Issues Survivor (In Development)",
+      "Client": "@ntngamedev",
+      "Services":
+      [
+        "Characters Concept Art ",
+        "Pixel Art Sprites and Animations",
+        "Pixel Art Props and Tilesets",
+        "Game Logo Design",
+        "Steam Capsule Artwork",
+      ],
     },
-    
-  };
-
+    gallery_size: 9,
+  },
   
+};
+
+
+for(const [code,project] of Object.entries(projects_data)) {
+  const img = new Image();
+  img.src = `assets/${project.code}/capsule.webp`;
+}
 
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -101,7 +103,7 @@ const projects_data = {
       // Create grid item
       const g_item = document.createElement('div');
       g_item.className = 'grid-item';
-      g_item.style.backgroundImage = `url(assets/${project.code}/capsule.gif)`;
+      g_item.style.backgroundImage = `url(assets/${project.code}/capsule.webp),url(/loading.webp)`;
       g_item.setAttribute('data-project-code', project.code);
       g_item.title = project.title;
       
@@ -152,12 +154,18 @@ const projects_data = {
         p_card.className = 'project-card';
         
         const p_capsule = p_card.appendChild(document.createElement('div'));
-        p_capsule.className = 'project-capsule';
+        p_capsule.className = 'project-capsule loading';
         
-        const p_capsule_img = p_capsule.appendChild(document.createElement('img'));
-        p_capsule_img.src = `assets/${project.code}/capsule.gif`;
+        
+        const p_capsule_img = new Image();
+        p_capsule_img.src = `assets/${project.code}/capsule.webp`;
         p_capsule_img.alt = 'capsule';
-        p_capsule_img.onclick = (e) => openLightbox(e,project.gallery_size, g_image_arr); //works because hoisting
+        p_capsule.appendChild(p_capsule_img);
+        p_capsule_img.onload = () => {
+          p_capsule.classList.remove("loading");
+          p_capsule_img.onclick = (e) => openLightbox(e,project.gallery_size, g_image_arr); //works because hoisting
+
+        }
         
         const p_info = p_card.appendChild(document.createElement('div'));
         p_info.className = 'project-info';
@@ -204,21 +212,26 @@ const projects_data = {
         gallery.id = `gallery-${project.code}`;
 
         const g_image_arr = Array.from({length: project.gallery_size}, (_, i) => 
-            `assets/${project.code}/item_${String(i).padStart(3, '0')}.gif`
+            `assets/${project.code}/item_${String(i).padStart(3, '0')}.webp`
         );
-        g_image_arr.push(`assets/${project.code}/capsule.gif`);
+        g_image_arr.push(`assets/${project.code}/capsule.webp`);
         
         
 
 
         for (let i = 0; i < project.gallery_size; i++) {
-            const g_item = gallery.appendChild(document.createElement('div'));
-            g_item.className = 'gallery-item';
 
-            const g_img = g_item.appendChild(document.createElement('img'));
-            g_img.src = g_image_arr[i];
-            g_img.alt = `Item ${i}`;
+          const g_item = gallery.appendChild(document.createElement('div'));
+          g_item.className = 'gallery-item loading';
+          const g_img = new Image();
+          g_img.src = g_image_arr[i];
+          g_img.alt = `Item ${i}`;
+          g_item.appendChild(g_img);
+          g_img.onload = () => {
+            g_item.classList.remove("loading");
             g_img.onclick = (e) => openLightbox(e,i, g_image_arr);
+            
+          }
         }
         
         project.loaded = true;

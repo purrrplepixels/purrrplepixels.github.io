@@ -11,6 +11,17 @@
   <link rel="stylesheet" href="base.css?12345">
   <link rel="stylesheet" href="mobile.css?12345" media="(max-aspect-ratio: 166669/100000)">
   <link rel="stylesheet" href="desktop.css?12345" media="(min-aspect-ratio: 166670/100000)">
+  <link rel="preload" href="/loading.webp" as="image" type="image/webp">
+  <link rel="preload" href="/icons/about.webp" as="image" type="image/webp">
+  <link rel="preload" href="/icons/projects.webp" as="image" type="image/webp">
+  <link rel="preload" href="/icons/portfolio.webp" as="image" type="image/webp">
+  <link rel="preload" href="/icons/about_hover.webp" as="image" type="image/webp">
+  <link rel="preload" href="/icons/portfolio_hover.webp" as="image" type="image/webp">
+  <link rel="preload" href="/icons/projects_hover.webp" as="image" type="image/webp">
+  
+  
+
+  
 </head>
 <body>
   <header>
@@ -45,14 +56,14 @@
           <i class="fa-solid fa-envelope"></i>
         </a> -->
         
-        <a class="social-btn discord" target="_blank" href="#discord_link"></a>
-        <a class="social-btn bluesky" target="_blank" href="https://bsky.app/profile/purrrplepixels.com"></a>
-        <a class="social-btn mail" target="_blank" href="mailto:purrrplepixelsgames@gmail.com"></a>
+        <a class="social-btn icon-discord" target="_blank" href="#discord_link" onmouseenter="set_animating(event)"></a>
+        <a class="social-btn icon-bluesky" target="_blank" href="https://bsky.app/profile/purrrplepixels.com"></a>
+        <a class="social-btn icon-mail" target="_blank" href="mailto:purrrplepixelsgames@gmail.com"></a>
         
       </div>
     </div>
   </footer>
-  
+  <script src="/scripts/animate.js" defer></script>
   <script src="/scripts/lightbox.js?t= + new Date().getTime()" defer></script>
   <script src="main.js" defer></script>
 </body>
