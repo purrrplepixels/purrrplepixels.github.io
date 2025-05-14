@@ -31,6 +31,7 @@ document.body.appendChild(lightbox);
 let currentIndex = 0;
 let prevIndex = 0;
 let image_list = [];
+let image_dir = '';
 
 // Event handlers
 lightbox.addEventListener('click', function(e) {
@@ -50,7 +51,7 @@ nextBtn.addEventListener('click', function(e) {
 
 function set_image(index) {
   
-  lightboxImg.src = image_list[index];
+  lightboxImg.src = image_dir+image_list[index];
   prevIndex = currentIndex;
   currentIndex = index;
   lightboxImg.onerror = () => {
@@ -59,9 +60,15 @@ function set_image(index) {
     lightboxImg.src = "/not-found.webp";
   }
 }
+function isLightboxEnabled(ev) 
+{
+  return ev.pointerType !== "touch"; // dont open in touch devices because inconsistencies with pinch zoom
+}
 // Core functions
-function openLightbox(evt,index, img_arr) {
-  if(evt.pointerType == "touch") return;
+function openLightbox(evt,index, img_arr,base_path) 
+{
+  if(!isLightboxEnabled(evt)) return;
+  image_dir = base_path;
   image_list = img_arr;
   currentIndex = index;
   set_image(index);
@@ -86,6 +93,7 @@ function nextImage() {
 }
 
 // Expose public API
+window.isLightboxEnabled = isLightboxEnabled;
 window.openLightbox = openLightbox;
 window.closeLightbox = closeLightbox;
 window.prevImage = prevImage;

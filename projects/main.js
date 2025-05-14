@@ -7,18 +7,26 @@ for(const code of project_list) {
 
 	document.addEventListener('DOMContentLoaded', function() {
 		const site_view = document.getElementById('view');
-		const projects_container = document.getElementById('projects-container');
-		const grid = document.getElementById('grid');
+		const projects_section = document.getElementById('projects-section');
+		const grid_section = document.getElementById('grid-section');
 		const grid_title = document.getElementById('grid-title');
+		const grid_button = document.getElementById('grid-button');
+		
 		const grid_container = document.getElementById('grid-container');
-		const mobile_back = document.querySelector(".mobile-back");
+		const mobile_back = document.getElementById("mobile-back");
 
 		let active_project = null;
 		let push_state_id = 0;
+
+		grid_button.addEventListener('click', ViewGrid);
+		mobile_back.addEventListener('click', ViewGrid);
+		
+
 		for(const code of project_list) {
 			const project = projects_data[code];
 			// Create project-data element
 			project.code = code;
+			project.assets_path = `assets/${project.code}`;
 			const proj_data = document.createElement('div');
 			proj_data.className = 'project-data';
 			proj_data.setAttribute('data-code', project.code);
@@ -31,9 +39,9 @@ for(const code of project_list) {
 			g_item.title = project.title;
 			{
 				const img = new Image();
-				img.src = `assets/${project.code}/capsule.webp`;
+				img.src = `${project.assets_path}/capsule.webp`;
 				img.onload = () => {
-					g_item.style.backgroundImage = `url(assets/${project.code}/capsule.webp)`;
+					g_item.style.backgroundImage = `url(${project.assets_path}/capsule.webp)`;
 				}
 				img.onerror = () => {
 					g_item.style.backgroundImage = `url(/not-found.webp)`;
@@ -47,7 +55,7 @@ for(const code of project_list) {
 			
 			grid_container.appendChild(g_item);
 			//appending
-			projects_container.appendChild(proj_data);
+			projects_section.appendChild(proj_data);
 			project["grid-item"] = g_item;
 			project["project-data"] = proj_data;
 		};
@@ -56,19 +64,18 @@ for(const code of project_list) {
 			site_view.classList.remove('project-view');
 			site_view.classList.add('grid-view');
 			mobile_back.classList.remove('show');
-			grid_title.removeEventListener('',set_hash)
 			
 			document.querySelectorAll('.grid-item.active').forEach(item => {
 				item.classList.remove('active');
 			});
 			document.querySelectorAll('.project-data.active').forEach(e => e.classList.remove('active'));
 			
-			grid_title.textContent = "Projects";
 		}
 		function enter_project_view(code) {
 				const project = load_project(code);
 				if(!project) return ViewGrid();
 				
+				window.scroll({top: 0, left: 0, behavior: "smooth"});
 				//document.querySelectorAll('.project-data.active').forEach(e => e.classList.remove('active'));
 				if(active_project) active_project['project-data'].classList.remove('active');
 				project['project-data'].classList.add('active');
@@ -76,28 +83,14 @@ for(const code of project_list) {
 				site_view.classList.add('project-view');
 				site_view.classList.remove('grid-view');
 				mobile_back.classList.add('show');
-				grid_title.addEventListener('click', ViewGrid);
-				grid_title.textContent = "View Grid";
 				
 				if(active_project) active_project["grid-item"].classList.remove("active");
 				project["grid-item"].classList.add("active");
 				
+				requestAnimationFrame(() => {
+					window.scroll({top: 0, left: 0, behavior: "instant"});
+				});
 				active_project = project;
-		}
-
-		async function load_json_data(code) {
-			try {
-				const response = await fetch(`./assets/${code}/data.json`);
-				if (!response.ok) {
-					throw new Error(`Failed to load data for ${code}`);
-				}
-				const data = await response.json();
-				projects_data[code] = data;
-				return data;
-			} catch (error) {
-				console.error(`Error loading project data for ${code}:`, error);
-				return null;
-			}
 		}
 				
 		function load_project(code)
@@ -111,11 +104,6 @@ for(const code of project_list) {
 				
 				if(project.loaded) return project;
 
-				//load gallery images
-				const gallery_image_array = Array.from({length: project.gallery_size}, (_, i) => 
-					`assets/${project.code}/item_${String(i).padStart(3, '0')}.webp`
-				);
-				
 				//project-card
 				const p_card = proj_data.appendChild(document.createElement('div'));
 				p_card.className = 'project-card';
@@ -125,13 +113,13 @@ for(const code of project_list) {
 				
 				
 				const p_capsule_img = new Image();
-				p_capsule_img.src = `assets/${project.code}/capsule.webp`;
+				p_capsule_img.src = `${project.assets_path}/capsule.webp`;
 				p_capsule_img.alt = 'capsule';
 				p_capsule.appendChild(p_capsule_img);
 				p_capsule_img.onload = () => {
 					p_capsule.classList.remove("loading");
-					gallery_image_array.push(p_capsule_img.src); // add capsule to lightbox
-					p_capsule_img.onclick = (e) => openLightbox(e,project.gallery_size, gallery_image_array);
+					project.gallery.push(p_capsule_img.src); // add capsule to lightbox
+					p_capsule_img.onclick = (e) => openLightbox(e,project.gallery.length-1,project.gallery, project.assets_path);
 				}
 				p_capsule_img.onerror = () => {
 					p_capsule_img.onload = null; // avoid call onload again
@@ -190,17 +178,17 @@ for(const code of project_list) {
 				
 
 
-				for (let i = 0; i < project.gallery_size; i++) {
+				for (let i = 0; i < project.gallery.length; i++) {
 
 					const g_item = gallery.appendChild(document.createElement('div'));
 					g_item.className = 'gallery-item loading';
 					const g_img = new Image();
-					g_img.src = gallery_image_array[i];
+					g_img.src = `${project.assets_path}/${project.gallery[i]}`;
 					g_img.alt = `Item ${i}`;
 					g_item.appendChild(g_img);
 					g_img.onload = () => {
 						g_item.classList.remove("loading");
-						g_img.onclick = (e) => openLightbox(e,i, gallery_image_array);
+						g_img.onclick = (e) => openLightbox(e,i, project.gallery,project.assets_path);
 					}
 					g_img.onerror = () => {
 						g_img.onload = null; // avoid call onload again

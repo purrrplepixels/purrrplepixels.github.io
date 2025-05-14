@@ -1,4 +1,4 @@
-// Auto-generated at 2025-05-14T01:42:54.151Z
+// Auto-generated at 2025-05-14T22:02:59.699Z
 const project_list = [
   "colorbynumber",
   "curserounds",
@@ -9,7 +9,7 @@ const project_list = [
   "streamraiders",
   "arenakingdoms",
   "streampirates",
-  "theoffice"
+  "projectoffice"
 ];
 const projects_data = {
   "arenakingdoms": {
@@ -22,6 +22,11 @@ const projects_data = {
         "Pixel Art Animations"
       ]
     },
+    "gallery": [
+      "item_000.webp",
+      "item_001.webp",
+      "item_002.webp"
+    ],
     "gallery_size": 3,
     "code": "arenakingdoms"
   },
@@ -36,6 +41,11 @@ const projects_data = {
         "Pixel Art UI"
       ]
     },
+    "gallery": [
+      "item_000.webp",
+      "item_001.webp",
+      "item_002.webp"
+    ],
     "gallery_size": 3,
     "code": "ascendant"
   },
@@ -51,7 +61,23 @@ const projects_data = {
         "Concept Art"
       ]
     },
-    "gallery_size": 13,
+    "gallery": [
+      "item_000.webp",
+      "item_001.webp",
+      "item_0010.webp",
+      "item_002.webp",
+      "item_003.webp",
+      "item_004.webp",
+      "item_005.webp",
+      "item_006.webp",
+      "item_007.webp",
+      "item_008.webp",
+      "item_009.webp",
+      "item_010.webp",
+      "item_011.webp",
+      "item_012.webp"
+    ],
+    "gallery_size": 14,
     "code": "colorbynumber"
   },
   "curserounds": {
@@ -68,6 +94,26 @@ const projects_data = {
         "Pixel Art Effects"
       ]
     },
+    "gallery": [
+      "item_000.webp",
+      "item_001.webp",
+      "item_002.webp",
+      "item_003.webp",
+      "item_004.webp",
+      "item_005.webp",
+      "item_006.webp",
+      "item_007.webp",
+      "item_008.webp",
+      "item_009.webp",
+      "item_010.webp",
+      "item_011.webp",
+      "item_012.webp",
+      "item_013.webp",
+      "item_014.webp",
+      "item_015.webp",
+      "item_016.webp",
+      "item_017.webp"
+    ],
     "gallery_size": 18,
     "code": "curserounds"
   },
@@ -84,8 +130,39 @@ const projects_data = {
         "Steam Capsule Artwork"
       ]
     },
+    "gallery": [
+      "item_000.webp",
+      "item_001.webp",
+      "item_002.webp",
+      "item_003.webp",
+      "item_004.webp",
+      "item_005.webp",
+      "item_006.webp",
+      "item_007.webp",
+      "item_008.webp"
+    ],
     "gallery_size": 9,
     "code": "gobutiko"
+  },
+  "projectoffice": {
+    "title": "Project Office",
+    "info": {
+      "Project": "Project Office (cancelled)",
+      "Client": "Outstandly",
+      "Services": [
+        "Concept Art",
+        "Pixel Art Characters",
+        "Pixel Art Logo"
+      ]
+    },
+    "gallery": [
+      "item_000.webp",
+      "item_001.webp",
+      "item_002.webp",
+      "item_003.webp"
+    ],
+    "gallery_size": 4,
+    "code": "projectoffice"
   },
   "streampirates": {
     "title": "Stream Pirates",
@@ -97,7 +174,12 @@ const projects_data = {
         "Pixel Art Animation"
       ]
     },
-    "gallery_size": 6,
+    "gallery": [
+      "item_000.webp",
+      "item_001.webp",
+      "item_002.webp"
+    ],
+    "gallery_size": 3,
     "code": "streampirates"
   },
   "streamraiders": {
@@ -110,6 +192,16 @@ const projects_data = {
         "Pixel Art Animation"
       ]
     },
+    "gallery": [
+      "item_000.webp",
+      "item_001.webp",
+      "item_002.webp",
+      "item_003.webp",
+      "item_004.webp",
+      "item_005.webp",
+      "item_006.webp",
+      "item_007.webp"
+    ],
     "gallery_size": 8,
     "code": "streamraiders"
   },
@@ -126,22 +218,16 @@ const projects_data = {
         "Pixel Art Tileset"
       ]
     },
-    "gallery_size": 9,
+    "gallery": [
+      "ui0.webp",
+      "ui1.webp",
+      "ui2.webp",
+      "ui3.webp",
+      "ui4.webp",
+      "z-end.webp"
+    ],
+    "gallery_size": 6,
     "code": "strella"
-  },
-  "theoffice": {
-    "title": "Office Project",
-    "info": {
-      "Project": "Office Project (cancelled)",
-      "Client": "Outstandly",
-      "Services": [
-        "Concept Art",
-        "Pixel Art Characters",
-        "Pixel Art Logo"
-      ]
-    },
-    "gallery_size": 4,
-    "code": "theoffice"
   },
   "undeadissues": {
     "title": "Undead Issues",
@@ -156,6 +242,17 @@ const projects_data = {
         "Steam Capsule Artwork"
       ]
     },
+    "gallery": [
+      "00_cover.webp",
+      "a_sprites.webp",
+      "b_props01.webp",
+      "b_props02.webp",
+      "b_props03.webp",
+      "b_props04.webp",
+      "c_mockup01.webp",
+      "c_mockup02.webp",
+      "c_mockup03.webp"
+    ],
     "gallery_size": 9,
     "code": "undeadissues"
   }

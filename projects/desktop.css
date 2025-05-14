@@ -20,7 +20,7 @@ header {
     box-sizing: border-box;
 }
 
-.logo {
+#logo {
     width: 220px;
     height: 220px;
     min-height: 220px;
@@ -33,7 +33,7 @@ header {
     margin-bottom: 3rem;
 }
 
-.nav-links {
+#nav-links {
     display: flex;
     flex-direction: column;
     flex: 2;
@@ -112,7 +112,7 @@ footer {
     inset: auto auto 0 0;
     width: var(--navwidth);
 }
-.social-section {
+#social-section {
     transition: all 0.3s ease;
     padding: 1em;
 }
@@ -157,41 +157,41 @@ main {
 /*end of base css */
 
 /*layout*/
-.grid,
-.projects-container {
+#grid-section,
+#projects-section {
     position: absolute;
 }
 
 
-.grid-view > .grid {
+.grid-view > #grid-section {
     inset: 0 0 0 0;
     box-sizing: border-box;
     overflow: hidden auto;
 }
 
-.grid-view > .projects-container{
+.grid-view > #projects-section{
     display: none;
 }
 
-.project-view > .grid {
+.project-view > #grid-section {
     inset: 0 0 0 auto;
     width: var(--sidegridwidth);
     overflow: hidden;
     box-sizing: border-box;
 }
 
-.project-view > .projects-container {
+.project-view > #projects-section {
     inset: 0 var(--sidegridwidth) 0 0;
 }
 
-.mobile-back {
+#mobile-back {
     display: none;
 }
 
 
 
 
-.grid {
+#grid-section {
     border-left: 2px dashed var(--pal3);
     display: flex;
     flex-direction: column;
@@ -200,30 +200,36 @@ main {
     z-index: 2;
 }
 
-.grid-title {
-    font-size: 2rem;
-    cursor: pointer;
-    text-align: center;
+.project-view #grid-title { display: none;}
+.grid-view #grid-title {
+    font-size: 24px;
     padding: 0;
+    display: inline-flex;
+    line-height: 32px;
+    align-self: center;
+    gap: 8px;
 }
 
-.project-view .grid-title {
+.grid-view    #grid-button { display: none;}
+.project-view #grid-button {
     font-size: 1em;
     padding: 0.5rem 1rem;
     background-color: var(--header);
     color: var(--white);
     text-decoration: none;
     border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
 }
 
-.grid-container {
+#grid-container {
     display: flex;
     flex-direction: column;
     padding-right: .25rem;
     gap: 1rem;
 }
 
-.grid-view .grid-container {
+.grid-view #grid-container {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
@@ -234,13 +240,13 @@ main {
     overflow: visible;
 }
 
-.project-view .grid-container {
+.project-view #grid-container {
     overflow: hidden auto;
     -ms-overrflow-style: none;
     scrollbar-width: none;
 }
 
-.grid-container::-webkit-scrollbar {
+#grid-container::-webkit-scrollbar {
     display: none;
 }
 
@@ -311,7 +317,7 @@ main {
     display: none;
 }
 
-.projects-container {
+#projects-section {
     flex: 1;
     display: flex;
     flex-direction: column;

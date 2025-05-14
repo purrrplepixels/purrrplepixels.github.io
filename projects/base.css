@@ -37,7 +37,7 @@
 }
 
 /* header */
-.nav-item > .icon {
+.icon {
     width: 32px;
     height: 32px;
     padding: 0;
@@ -45,7 +45,7 @@
     background-repeat: no-repeat;
     background-position-x: 0;
 }
-.nav-item:hover > .icon {
+.nav-link:hover > .icon {
     background-position-x: -32px;
 }
 

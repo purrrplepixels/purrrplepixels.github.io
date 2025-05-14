@@ -8,15 +8,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=Carter+One&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="base.css?1">
-  <link rel="stylesheet" href="mobile.css?1" media="(max-aspect-ratio: 166669/100000)">
-  <link rel="stylesheet" href="desktop.css?1" media="(min-aspect-ratio: 166670/100000)">
+  <link rel="stylesheet" href="base.css?v=123">
+  <link rel="stylesheet" href="mobile.css?v=123" media="(max-aspect-ratio: 166669/100000)">
+  <link rel="stylesheet" href="desktop.css?v=123" media="(min-aspect-ratio: 166670/100000)">
   <link rel="preload" href="/loading.webp" as="image" type="image/webp">
 </head>
 <body>
   <header>
-    <a href="#" class="logo"></a>
-    <nav class="nav-links">
+    <a href="#" id="logo"></a>
+    <nav id="nav-links">
       <a class="nav-item" href="#purrrpleprojects">
         <i class="icon icon-cat"></i>
         <span class="label">
@@ -40,19 +40,19 @@
       </a>
     </nav>
   </header>
-
   <main>
     <div id="view">
-      <div class="projects-container" id="projects-container"></div>
-      <section class="grid" id="grid">
-        <div class="grid-title" id="grid-title">Projects</div>
-        <div class="grid-container" id="grid-container"></div>
+      <section id="projects-section"></section>
+      <section id="grid-section">
+        <div id="grid-title"><i class="icon icon-book"></i>Projects</div>
+        <div id="grid-button">View All</div>
+        <div id="grid-container"></div>
       </section>
     </div>
   </main>
   <footer>
-    <div class="mobile-back" onclick="ViewGrid()"><i class="fa-solid fa-angles-left"></i></div>
-    <div class="social-section">
+    <div id="mobile-back"><i class="fa-solid fa-angles-left"></i></div>
+    <section id="social-section">
       <div class="social-links">
         <!-- <a href="https://www.instagram.com/purrrplepixels/" target="_blank">
           <i class="fa-brands fa-instagram"></i>
@@ -69,12 +69,12 @@
         <a class="social-btn icon-mail" target="_blank" href="mailto:purrrplepixelsgames@gmail.com"></a>
         
       </div>
-    </div>
+    </section>
   </footer>
   <script src="/scripts/animate.js" defer></script>
   <script src="/scripts/lightbox.js" defer></script>
-  <script src="projects_data.js?t=2" defer></script>
-  <script src="main.js?t=2" defer></script>
+  <script src="projects_data.js?v=123" defer></script>
+  <script src="main.js?v=123" defer></script>
   
 </body>
 </html>
