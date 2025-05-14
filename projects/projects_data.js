@@ -1,4 +1,4 @@
-// Auto-generated at 2025-05-14T01:00:03.188Z
+// Auto-generated at 2025-05-14T01:42:54.151Z
 const project_list = [
   "colorbynumber",
   "curserounds",
@@ -58,16 +58,17 @@ const projects_data = {
     "title": "Curse Rounds",
     "info": {
       "Project": "Curse Rounds",
-      "Client": "Ohdihambo",
+      "Client": "Tentacles Interactive",
       "Services": [
-        "Pixel Art Opening Scene",
+        "Pixel Art Characters",
+        "Pixel Art Animations",
         "Pixel Art UI",
         "Pixel Art Icons",
         "Pixel Art Props",
-        "Pixel Art Tileset"
+        "Pixel Art Effects"
       ]
     },
-    "gallery_size": 17,
+    "gallery_size": 18,
     "code": "curserounds"
   },
   "gobutiko": {
@@ -87,9 +88,9 @@ const projects_data = {
     "code": "gobutiko"
   },
   "streampirates": {
-    "title": "Arena Kingdoms",
+    "title": "Stream Pirates",
     "info": {
-      "Project": "Arena Kingdoms",
+      "Project": "Stream Pirates",
       "Client": "Outstandly",
       "Services": [
         "Pixel Art Characters",
@@ -134,11 +135,9 @@ const projects_data = {
       "Project": "Office Project (cancelled)",
       "Client": "Outstandly",
       "Services": [
-        "Pixel Art Opening Scene",
-        "Pixel Art UI",
-        "Pixel Art Icons",
-        "Pixel Art Props",
-        "Pixel Art Tileset"
+        "Concept Art",
+        "Pixel Art Characters",
+        "Pixel Art Logo"
       ]
     },
     "gallery_size": 4,
