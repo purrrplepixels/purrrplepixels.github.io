@@ -2,34 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
   <title>Purrrple Pixels Projects</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=Carter+One&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="base.css?12345">
-  <link rel="stylesheet" href="mobile.css?12345" media="(max-aspect-ratio: 166669/100000)">
-  <link rel="stylesheet" href="desktop.css?12345" media="(min-aspect-ratio: 166670/100000)">
+  <link rel="stylesheet" href="base.css?1">
+  <link rel="stylesheet" href="mobile.css?1" media="(max-aspect-ratio: 166669/100000)">
+  <link rel="stylesheet" href="desktop.css?1" media="(min-aspect-ratio: 166670/100000)">
   <link rel="preload" href="/loading.webp" as="image" type="image/webp">
-  <link rel="preload" href="/icons/about.webp" as="image" type="image/webp">
-  <link rel="preload" href="/icons/projects.webp" as="image" type="image/webp">
-  <link rel="preload" href="/icons/portfolio.webp" as="image" type="image/webp">
-  <link rel="preload" href="/icons/about_hover.webp" as="image" type="image/webp">
-  <link rel="preload" href="/icons/portfolio_hover.webp" as="image" type="image/webp">
-  <link rel="preload" href="/icons/projects_hover.webp" as="image" type="image/webp">
-  
-  
-
-  
 </head>
 <body>
   <header>
     <a href="#" class="logo"></a>
     <nav class="nav-links">
-      <a class="nav-item icon-about" href="#about"><span>About</span></a>
-      <a class="nav-item icon-project" href="/projects"><span>Projects</span></a>
-      <a class="nav-item icon-portfolio" href="#outsourcing"><span>Portfolio</span></a>
+      <a class="nav-item" href="#purrrpleprojects">
+        <i class="icon icon-cat"></i>
+        <span class="label">
+          <span class="fun">Main Story</span>
+          <span class="not-fun">Our Projects</span>
+        </span>
+      </a>
+      <a class="nav-item" href="#">
+        <i class="icon icon-book"></i>
+        <span class="label">
+          <span class="fun">Side Quests</span>
+          <span class="not-fun">Client Work</span>
+        </span>
+      </a>
+      <a class="nav-item" href="#aboutus">
+        <i class="icon icon-team"></i>
+        <span class="label">
+          <span class="fun">Party</span>
+          <span class="not-fun">About Us</span>
+        </span>
+      </a>
     </nav>
   </header>
 
@@ -43,7 +51,7 @@
     </div>
   </main>
   <footer>
-    <div class="mobile-back" onclick="enterGridView()"><i class="fa-solid fa-angles-left"></i></div>
+    <div class="mobile-back" onclick="ViewGrid()"><i class="fa-solid fa-angles-left"></i></div>
     <div class="social-section">
       <div class="social-links">
         <!-- <a href="https://www.instagram.com/purrrplepixels/" target="_blank">
@@ -64,8 +72,10 @@
     </div>
   </footer>
   <script src="/scripts/animate.js" defer></script>
-  <script src="/scripts/lightbox.js?t= + new Date().getTime()" defer></script>
-  <script src="main.js" defer></script>
+  <script src="/scripts/lightbox.js" defer></script>
+  <script src="projects_data.js?t=2" defer></script>
+  <script src="main.js?t=2" defer></script>
+  
 </body>
 </html>
 

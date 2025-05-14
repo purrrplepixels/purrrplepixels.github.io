@@ -37,25 +37,44 @@
 }
 
 /* header */
-.nav-item.icon-about{
-    background-image: url(/icons/about.webp);
+.nav-item > .icon {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background-size: 64px 32px;
+    background-repeat: no-repeat;
+    background-position-x: 0;
 }
-.nav-item.icon-about:hover{
-    background-image: url(/icons/about_hover.webp);
-}
-
-.nav-item.icon-project{
-    background-image: url(/icons/projects.webp);
-}
-.nav-item.icon-project:hover{
-    background-image: url(/icons/projects_hover.webp);
+.nav-item:hover > .icon {
+    background-position-x: -32px;
 }
 
-.nav-item.icon-portfolio{
-    background-image: url(/icons/portfolio.webp);
+.icon.icon-cat { background-image: url(/icons/cat.webp);}
+.icon.icon-book { background-image: url(/icons/book.webp);}
+.icon.icon-team { background-image: url(/icons/team.webp);}
+
+
+
+
+.nav-item.icon-mainstory{
+    background-image: url(/icons/cat.webp);
 }
-.nav-item.icon-portfolio:hover{
-    background-image: url(/icons/portfolio_hover.webp);
+.nav-item.icon-mainstory:hover{
+    background-image: url(/icons/cat_hover.webp);
+}
+
+.nav-item.sidequests{
+    background-image: url(/icons/book.webp);
+}
+.nav-item.sidequests:hover{
+    background-image: url(/icons/book.webp);
+}
+
+.nav-item.icon-party{
+    background-image: url(/icons/team.webp);
+}
+.nav-item.icon-party:hover{
+    background-image: url(/icons/team_hover.webp);
 }
 
 /* footer  */

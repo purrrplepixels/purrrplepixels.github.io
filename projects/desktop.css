@@ -41,35 +41,69 @@ header {
 
 .nav-item {
     display: flex;
-    align-items: center;
     text-decoration: none;
     color: white;
     font-size: 1.5rem;
-    background-repeat: no-repeat;
-    padding: 1rem;
-    padding-left: 3rem;
-    height: 2rem;
-    line-height: 2rem;
+    padding: 16px 8px;
+    height: 32px;
+    line-height: 32px;
     vertical-align: middle;
-    background-position: left;
-    background-position-x: 10px;
+    background-position: 10px center;
     border-radius: 1rem;
     transition: all .2s cubic-bezier(0.55, 0.09, 0.68, 0.53);
     margin-bottom: .125rem;
+    background-size: 32px;
     image-rendering: pixelated;
 }
-
-
-
-
-
 
 .nav-item:hover {
     background-color: var(--dark);
     background-position-x: 15px;
-    padding-left: 53px;
+    padding-left: 16px;
 
 }
+.nav-item > .icon {
+    margin-right: 8px;
+}
+.nav-item > .label {
+    position: relative;
+    width: 156px;
+}
+
+.nav-item > .label > span {
+  display: inline-block;
+  transition: all 0.3s;
+  position: absolute;
+}
+
+.nav-item:not(:hover) > .label > .not-fun {
+    opacity: 0;
+}
+.nav-item:hover > .label > .fun {
+  animation: glitch-out 0.4s linear forwards;
+}
+
+.nav-item:hover > .label > .not-fun {
+  animation: glitch-in 0.4s linear forwards;
+}
+
+@keyframes glitch-out {
+  0% { transform: translateX(0); opacity: 1; }
+  20% { transform: translateX(-5px); opacity: 0.8; }
+  40% { transform: translateX(3px) skewX(10deg); opacity: 0.6; }
+  60% { transform: translateX(-8px) skewX(-15deg); opacity: 0.4; }
+  80% { transform: translateX(10px) scaleY(0.8); opacity: 0.2; }
+  100% { transform: translateX(0) scaleY(0); opacity: 0; }
+}
+
+@keyframes glitch-in {
+  0% { transform: translateX(20px) scaleY(2); opacity: 0; filter: blur(2px); }
+  30% { transform: translateX(-10px) skewX(20deg); opacity: 0.5; filter: blur(1px); }
+  60% { transform: translateX(5px) scaleY(0.9); opacity: 0.8; }
+  80% { transform: translateX(-2px) skewX(-5deg); opacity: 0.9; }
+  100% { transform: translateX(0); opacity: 1; filter: blur(0); }
+}
+
 
 /* footer */
 
@@ -410,7 +444,6 @@ main {
     justify-content: center;
     z-index: 999;
     display: none;
-    /* starting display mode */
 }
 
 #lightbox-img {
