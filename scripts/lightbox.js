@@ -51,7 +51,7 @@ nextBtn.addEventListener('click', function(e) {
 
 function set_image(index) {
   
-  lightboxImg.src = image_dir+image_list[index];
+  lightboxImg.src = `${image_dir}/${image_list[index]}`;
   prevIndex = currentIndex;
   currentIndex = index;
   lightboxImg.onerror = () => {
