@@ -45,7 +45,7 @@
     background-repeat: no-repeat;
     background-position-x: 0;
 }
-.nav-link:hover > .icon {
+.nav-item:hover > .icon {
     background-position-x: -32px;
 }
 
